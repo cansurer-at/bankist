@@ -68,9 +68,8 @@ const displayMovements = function (movements, sort = false) {
 
     const html = `
        <div class="movements__row">
-           <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
+           <div class="movements__type movements__type--${type}">${i + 1
+      } ${type}</div>
            <div class="movements__value">${mov} € </div>
       </div>
  `;
@@ -152,9 +151,16 @@ const totalDepositsUSD = movements
 
 let currentAccount;
 
+function forceLower(strInput) {
+  strInput.value = strInput.value.toLowerCase();
+}
+
+
 btnLogin.addEventListener('click', function (e) {
   // Below method prevent form from submitting
+
   e.preventDefault();
+
 
   currentAccount = accounts.find(
     acc => acc.username === inputLoginUsername.value
@@ -163,9 +169,8 @@ btnLogin.addEventListener('click', function (e) {
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // display  UI with welcome message
-    labelWelcome.textContent = `Welcome Back, ${
-      currentAccount.owner.split(' ')[0]
-    }`;
+    labelWelcome.textContent = `Welcome Back, ${currentAccount.owner.split(' ')[0]
+      }`;
     containerApp.style.opacity = 100;
     // clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
